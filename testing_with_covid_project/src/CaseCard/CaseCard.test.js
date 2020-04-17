@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import CaseCard, { getCountries } from './';
 import { data } from './config';
 import { CountryContextProvider } from '../Context/contryContext';
@@ -13,7 +13,7 @@ const setup = ({ cases }) => {
 };
 
 describe('case card', () => {
-  test('correctly renders congrats string in English by default', () => {
+  test('case card data correctly', () => {
     const wrapper = setup({ cases: data });
     expect(wrapper.props().value).toEqual(data);
   });
@@ -25,7 +25,7 @@ test('renders without error', () => {
   expect(component.length).toBe(1);
 });
 
-test('renders without error', () => {
+test('renders CountryCardRow without error and correct length', () => {
   const wrapper = setup({ cases: data });
   const component = wrapper.find('CountryCardRow');
   const realLen = getCountries(data).length;
